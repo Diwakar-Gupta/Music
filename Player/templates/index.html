@@ -301,13 +301,13 @@
                                     href="##"
                                     class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i
                                     class="icon-refresh i-lg inline" id="refresh"></i></a>
-                                <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm"
+                                <h2 class="font-thin m-b">Discover <span class="musicbar inline m-l-sm"
                                                                          style="width:20px;height:20px"> <span
                                         class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
                                         class="bar3 a3 bg-success"></span> <span
                                         class="bar4 a4 bg-warning dk"></span> <span
                                         class="bar5 a5 bg-danger dker"></span> </span></h2>
-                                <div class="row row-sm">
+                                <div class="row row-sm" id="albumContainer" >
 
                                   {% for a in album %}
 
@@ -344,7 +344,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-7"><h3 class="font-thin">New Songs</h3>
-                                        <div class="row row-sm">
+                                        <div class="row row-sm " id="songContainer" >
 
                                             {% for s in song %}
                                             <div class="col-xs-6 col-sm-3">
@@ -405,7 +405,7 @@
                                     </div>
                                 </div>
                             </section>
-                            <footer class="footer bg-dark">
+                            <footer class="footer bg-dark" >
                                 <div id="jp_container_N" class="jp-video-270p">
                                     <div class="jp-type-playlist">
                                         <div id="jplayer_N" class="jp-jplayer hide"
@@ -423,12 +423,12 @@
                                                     class="jp-video-play-icon">play</a></div>
                                             <div class="jp-interface">
                                                 <div class="jp-controls">
-                                                    <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a>
+                                                    <div><a class="jp-previous" id="control-previous" ><i class="icon-control-rewind i-lg"></i></a>
                                                     </div>
-                                                    <div><a class="jp-play" style="display: none;"><i
+                                                    <div><a class="jp-play" id="control-play" style="display: inline;"><i
                                                             class="icon-control-play i-2x"></i></a> <a
-                                                            class="jp-pause hid" style="display: inline;"><i
-                                                            class="icon-control-pause i-2x"></i></a></div>
+                                                            class="jp-pause hid" id="control-pause" style="display: none;"><i
+                                                            class="icon-control-pause i-2x"  ></i></a></div>
                                                     <div><a class="jp-next"><i
                                                             class="icon-control-forward i-lg"></i></a></div>
                                                     <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a>
@@ -450,8 +450,8 @@
                                                     <div class="hidden-xs hidden-sm jp-duration text-xs text-muted">
                                                         03:29
                                                     </div>
-                                                    <div class="hidden-xs hidden-sm"><a class="jp-mute" title="mute"><i
-                                                            class="icon-volume-2"></i></a> <a class="jp-unmute hid"
+                                                    <div class="hidden-xs hidden-sm"><a id="control-unmute" class="jp-mute" title="mute"><i
+                                                            class="icon-volume-2"></i></a> <a id="control-mute" class="jp-unmute hid"
                                                                                               title="unmute"
                                                                                               style="display: none;"><i
                                                             class="icon-volume-off"></i></a></div>
@@ -548,11 +548,16 @@
         </section>
     </section>
 </section> <!-- Bootstrap --> <!-- App -->
-<script src="{% static 'assets/app.v1.js' %}"></script>
+<!--<script src="{% static 'assets/app.v1.js' %}"></script>
 <script src="{% static 'assets/app.plugin.js' %}"></script>
 <script type="text/javascript" src="{% static 'assets/jquery.jplayer.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'assets/jplayer.playlist.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'assets/demo.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/demo.js' %}"></script>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
 <script type="text/javascript" src="{% static 'assets/index.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/player.js' %}"></script>
 </body>
 </html>
