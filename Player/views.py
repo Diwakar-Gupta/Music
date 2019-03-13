@@ -9,7 +9,16 @@ def Index(request):
     album = Album.objects.all()
     song = Song.objects.all()
     
-    return render(request,"index.html",context={'album':album,'song':song,'top':song})
+    return render(request,"home.html",context={'album':album,'song':song,'top':song,'playlist':song})
+
+
+def getPage(request):
+    which=request.POST.get('which')
+
+    if which == 'index':
+        return render(request,'index.html',context={})
+    else :
+        return render(request,'song.html',context={})
 
 
 def getUrl(request):
