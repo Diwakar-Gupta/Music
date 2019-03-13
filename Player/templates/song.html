@@ -23,8 +23,8 @@
                                         </div>
                                         <ul
                                                 class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-
-                                                {% for s in song %}
+                                                
+                                                {% for a in album %}
                                                 <li class="list-group-item">
                                                         <div class="pull-right m-l"> <a href="#" class="m-r-sm"><i
                                                                                 class="icon-cloud-download"></i></a> <a
@@ -34,9 +34,9 @@
                                                         <a href="#" class="jp-play-me m-r-sm pull-left"> <i
                                                                         class="icon-control-play text"></i> <i
                                                                         class="icon-control-pause text-active"></i> </a>
-                                                        <div class="clear text-ellipsis"> <span>E.T.M</span> <span
+                                                        <div class="clear text-ellipsis"> <span>{{ a.name }}</span> <span
                                                                         class="text-muted"> --
-                                                                        04:35</span> </div>
+                                                                        {{5}}</span> </div>
                                                 </li>
 
                                                 {% endfor %}
@@ -51,17 +51,17 @@
                                 <section class="scrollable hover">
                                         <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
 
-                                                {% for s in searched %}
+                                                {% for s in song %}
 
-                                                <li class="list-group-item clearfix"> <a href="#"
+                                                <li pk={{s.pk}} name="{{s.name}}" pic="{{s.pic}}" onclick='function addToPlayList'  class="list-group-item clearfix "> <a href="#"
                                                                 class="jp-play-me pull-right m-t-sm m-l text-md"> <i
                                                                         class="icon-control-play text"></i>
                                                                 <i class="icon-control-pause text-active"></i> </a> <a
                                                                 href="#" class="pull-left thumb-sm m-r"> <img
-                                                                        src="images/m0.jpg" alt="..."> </a> <a
+                                                                        src="{{s.pic}}" alt="..."> </a> <a
                                                                 class="clear" href="#"> <span
-                                                                        class="block text-ellipsis">Little Town</span>
-                                                                <small class="text-muted">by Soph Ashe</small> </a>
+                                                                        class="block text-ellipsis">{{s.name}}</span>
+                                                                <small class="text-muted">by{{ s.author}}</small> </a>
                                                 </li>
 
                                                 {% endfor %}
@@ -72,4 +72,3 @@
                 </section>
         </section>
 </section>
-<script type="text/javascript" src="{% static 'assets/song.js' %}"></script>

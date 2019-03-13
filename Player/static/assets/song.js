@@ -1,9 +1,23 @@
 $(function () {
 
-    $(document.getElementById('search')).on)('click'){
-        
-    }
+    $(document.getElementById('search')).on('click',function(){
+        let value = $(this).val().toLowerCase();
 
+        $.ajax({
+            type:'GET',
+            url : "/searchSong",
+            data : {
+                what:value,
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()  
+            },
+            success : function(dat){
+                
+
+
+            }
+        });
+
+    }
 
     $('.fa-play-circle').on('click',function(e){
         e.preventDefault();
@@ -28,3 +42,6 @@ function showAlbum(data){
 
 }
 
+function addToPlayList(){
+    alert('fff')
+}

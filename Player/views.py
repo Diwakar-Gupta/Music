@@ -15,10 +15,13 @@ def Index(request):
 def getPage(request):
     which=request.POST.get('which')
 
+    album = Album.objects.all()
+    song = Song.objects.all()
+
     if which == 'index':
         return render(request,'index.html',context={})
     else :
-        return render(request,'song.html',context={})
+        return render(request,'song.html',context={'album':album,'song':song})
 
 
 def getUrl(request):
