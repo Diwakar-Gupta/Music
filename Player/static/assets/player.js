@@ -1,12 +1,12 @@
 let audioPlayer =$('#jp_audio_0')[0] ;
 let controlplay = $('#control-play');
 let controlpause = $('#control-pause');
-let musicBar = $('.musicbar');
 let controlmute = $('#control-mute');
 let controlunmute = $('#control-unmute');
 let playListview = $($('#playList')[0]);
 let currentPlaying = -1;
 let playList = [];  
+let playingPK=-1
 
 $(function () {
     updatePlayList();
@@ -25,9 +25,24 @@ function updatePlayList(){
 
 }
 
-function play(url){
+function play(url,pk){
+    if(audioPlayer.src!=url)
     audioPlayer.src=url;
     audioPlayer.play();
+    $('li a .icon-control-pause').css('display','none');
+    $('li a .icon-control-play').css('display','inline');
+    $('li[pk='+pk+']').find('a .icon-control-play').css('display','none ');
+    $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');
+}
+
+function playListSong(pk){
+    getSong(pk);
+    let index=0;
+    for(index=0;index<playList.length;index++)
+        if(playList[index].pk==pk){
+        currentPlaying=index;
+        break;
+    }
 }
 
 function playNext(){
@@ -60,13 +75,13 @@ $(controlplay).on('click',function(){audioPlayer.play();});
 audioPlayer.onpause=function(){
     controlpause.hide();
     controlplay.show();
-    musicBar.removeClass('animate');
+    $('.musicbar').removeClass('animate');
 }
 
 audioPlayer.onplay=function(){
     controlplay.hide();
     controlpause.show();
-    musicBar.addClass('animate');
+    $('.musicbar').each($(this).addClass('animate'));
 }
 
 audioPlayer.addEventListener('volumechange',function(){
@@ -103,7 +118,13 @@ function getSong(pk){
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()  
         },
         success : function(dat){
-            play(dat);            
+            if(playingPK!=pk)
+            play(dat,pk);    
+            playingPK=pk;
+            $('li a .icon-control-pause').css('display','none');
+            $('li a .icon-control-play').css('display','inline');
+            $('li[pk='+pk+']').find('a .icon-control-play').css('display','none ');
+            $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');        
         }
     });
 }
@@ -126,3 +147,4 @@ function getAlbum(pk){
         }
     });
 }
+

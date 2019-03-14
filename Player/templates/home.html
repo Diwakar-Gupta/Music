@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{% static 'assets/jplayer.flat.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'assets/app.v1.css' %}" type="text/css">
-    <script type="text/javascript" src="{% static 'assets/song.js' %}"></script>
+    
     <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
     <style type="text/css">:root #content > #right > .dose > .dosesingle,
     :root #content > #center > .dose > .dosesingle {
@@ -427,12 +427,12 @@
                                 <ul class="list-group no-bg no-borders auto m-t-n-xxs" id="playList" >
 
                                     {% for p in playlist %}   
-                                    <li pk={{p.pk}} name="{{ p.name }}" class="list-group-item
+                                    <li pk={{p.pk}} name="{{ p.name }}" onclick="playListSong({{p.pk}})" class="list-group-item
                                                         clearfix"> <a href="#" class="jp-play-me
                                                             pull-right m-t-sm
                                                             m-l text-md"> <i class="icon-control-play
                                                                 text"></i> <i class="icon-control-pause
-                                                                text-active"></i>
+                                                                " style="display:none" ></i>
                                                     </a> <a href="#" class="pull-left
                                                             thumb-sm m-r"> <img src="{{ p.pic }}" alt="..."> </a>
                                                     <a class="clear" href="#"> <span class="block
@@ -474,6 +474,7 @@
 
 <script type="text/javascript" src="{% static 'assets/player.js' %}"></script>
 <script type="text/javascript" src="{% static 'assets/home.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/song.js' %}"></script>
 
 </body>
 </html>

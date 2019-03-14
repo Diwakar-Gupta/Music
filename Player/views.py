@@ -19,7 +19,7 @@ def getPage(request):
     song = Song.objects.all()
 
     if which == 'index':
-        return render(request,'index.html',context={})
+        return render(request,'index.html',context={'album':album,'song':song})
     else :
         return render(request,'song.html',context={'album':album,'song':song})
 
