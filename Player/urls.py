@@ -8,6 +8,7 @@ app_name='mp'
 urlpatterns = [
     path('',views.Index,name ='index'),
     path('getPage',views.getPage),
+    pth('search',views.search),
     path('getUrl',views.getUrl,name='getUrl')
    # path('search',views.search,name='search'),
    # path('like',views.like,name='like'),

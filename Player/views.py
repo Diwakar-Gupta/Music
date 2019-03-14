@@ -24,6 +24,14 @@ def getPage(request):
         return render(request,'song.html',context={'album':album,'song':song})
 
 
+def search(request):
+    value=request.POST.get('what')
+
+    result = []
+
+    return HttpResponse('')
+
+
 def getUrl(request):
     print(request.POST)
     what = request.POST.get('what')

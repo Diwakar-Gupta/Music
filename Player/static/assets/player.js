@@ -25,14 +25,19 @@ function updatePlayList(){
 
 }
 
+
+
 function play(url,pk){
     if(audioPlayer.src!=url)
     audioPlayer.src=url;
-    audioPlayer.play();
+    
+    try{
     $('li a .icon-control-pause').css('display','none');
     $('li a .icon-control-play').css('display','inline');
     $('li[pk='+pk+']').find('a .icon-control-play').css('display','none ');
     $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');
+    }catch(err){}
+    audioPlayer.play();
 }
 
 function playListSong(pk){
@@ -81,8 +86,10 @@ audioPlayer.onpause=function(){
 audioPlayer.onplay=function(){
     controlplay.hide();
     controlpause.show();
-    $('.musicbar').each($(this).addClass('animate'));
+    $('.musicbar').addClass('animate');
 }
+
+audioPlayer.addEventListener('ended',playNext);
 
 audioPlayer.addEventListener('volumechange',function(){
     if(audioPlayer.volume==0){
@@ -93,10 +100,10 @@ audioPlayer.addEventListener('volumechange',function(){
         controlmute.hide();
         controlunmute.show();
     }
-
+    
 })
 
-controlmute.on('click',function(){audioPlayer.volume=1;});
+controlmute.on('click',function(){audioPlayer.volume=document.getElementById('control-volume').value/10;});
 controlunmute.on('click',function(){audioPlayer.volume=0;});
 
 
@@ -148,3 +155,7 @@ function getAlbum(pk){
     });
 }
 
+document.getElementById('control-volume').onchange=function(){
+
+    audioPlayer.volume=this.value/10;
+}
