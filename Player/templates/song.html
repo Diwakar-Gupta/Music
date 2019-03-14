@@ -3,7 +3,7 @@
 <section class="w-f-md">
         <section class="hbox stretch bg-black dker">
                 <!-- side content -->
-                <aside class="col-sm-5 no-padder" id="sidebar">
+                <aside class="col-sm-5 no-padder" >
                         <section class="vbox animated fadeInUp">
                                 <section class="scrollable" id="albumContainer" >
                                         <div class="m-t-n-xxs item pos-rlt">
@@ -22,7 +22,7 @@
                                                  <img class="img-full" id="albumImage"
                                                         src="../static/default_song.png" alt="..." style="width: 35%;">
                                         </div>
-                                        <ul  id="songContainer"
+                                        <ul  id="albumSongContainer"
                                                 class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
 
                                                 {% for a in album %}
@@ -58,7 +58,7 @@
                                                          <a href="#"
                                                                 class="jp-play-me pull-right m-t-sm m-l text-md "> <i
                                                                         class="icon-control-play text"></i>
-                                                                <i class="icon-control-pause text" style="display:none" ></i> </a> <a
+                                                                <i onclick="controlpause.click();" class="icon-control-pause text" style="display:none" ></i> </a> <a
                                                                 href="#" class="pull-left thumb-sm m-r"> <img
                                                                         src="{{s.pic}}" alt="..."> </a> <a
                                                                 class="clear" href="#"> <span

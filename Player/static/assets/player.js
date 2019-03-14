@@ -5,8 +5,9 @@ let controlmute = $('#control-mute');
 let controlunmute = $('#control-unmute');
 let playListview = $($('#playList')[0]);
 let currentPlaying = -1;
-let playList = [];  
+let playList = [];
 let playingPK=-1
+let urlContainer={}
 
 $(function () {
     updatePlayList();
@@ -38,6 +39,7 @@ function play(url,pk){
     $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');
     }catch(err){}
     audioPlayer.play();
+    playingPK=pk;
 }
 
 function playListSong(pk){
@@ -116,6 +118,15 @@ $("#searchSong").on("keyup", function() {
   
 
 function getSong(pk){
+
+    if(urlContainer[pk]){
+        if(playingPK!=pk){
+            play(urlContainer[pk],pk);
+            if(audioPlayer.paused)audioPlayer.play();
+            }
+        playingPK=pk;   
+    }
+else{
     $.ajax({
         type:'POST',
         url : "/getUrl",
@@ -125,15 +136,16 @@ function getSong(pk){
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()  
         },
         success : function(dat){
-            if(playingPK!=pk)
-            play(dat,pk);    
-            playingPK=pk;
-            $('li a .icon-control-pause').css('display','none');
-            $('li a .icon-control-play').css('display','inline');
-            $('li[pk='+pk+']').find('a .icon-control-play').css('display','none ');
-            $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');        
+            urlContainer[pk]=dat;
+            if(playingPK!=pk){
+            play(dat,pk);
+            if(audioPlayer.paused)audioPlayer.play();
+            }
+            playingPK=pk;       
         }
     });
+}
+    
 }
 
 function getAlbum(pk){
