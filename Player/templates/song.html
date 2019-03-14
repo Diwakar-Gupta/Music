@@ -6,7 +6,7 @@
                 <aside class="col-sm-5 no-padder" >
                         <section class="vbox animated fadeInUp">
                                 <section class="scrollable" id="albumContainer" >
-                                        <div class="m-t-n-xxs item pos-rlt">
+                                        <div id="songAlbumHeader" class="m-t-n-xxs item pos-rlt">
                                                 <div class="top text-right"> <span
                                                                 class="musicbar animate bg-success bg-empty inline m-r-lg m-t"
                                                                 style="width:25px;height:30px"> <span
@@ -26,7 +26,7 @@
                                                 class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
 
                                                 {% for a in album %}
-                                                <li pk={{s.pk}} name="{{s.name}}" pic="{{s.pic}}" onclick="playNow" class="list-group-item">
+                                                <li pk={{s.pk}} name="{{s.name}}" pic="{{s.pic}}" onclick=playNow({{a.pk}}) class="list-group-item">
                                                         <div class="pull-right m-l"> <a href="#" class="m-r-sm"><i
                                                                                 class="icon-cloud-download"></i></a> <a
                                                                         href="#" class="m-r-sm"><i
@@ -54,7 +54,7 @@
 
                                                 {% for s in song %}
 
-                                                <li pk={{s.pk}} name="{{s.name}}" pic="{{s.pic}}" onclick="playNow($('li[pk={{s.pk}}]'))"  class="list-group-item clearfix ">
+                                                <li pk={{s.pk}} name="{{s.name}}" pic="{{s.pic}}" onclick="playNow({{s.pk}})"  class="list-group-item clearfix ">
                                                          <a href="#"
                                                                 class="jp-play-me pull-right m-t-sm m-l text-md "> <i
                                                                         class="icon-control-play text"></i>

@@ -107,23 +107,15 @@ audioPlayer.addEventListener('volumechange',function(){
 
 controlmute.on('click',function(){audioPlayer.volume=document.getElementById('control-volume').value/10;});
 controlunmute.on('click',function(){audioPlayer.volume=0;});
-
-
-$("#searchSong").on("keyup", function() {
-      let value = $(this).val().toLowerCase();
-      playListview.children().filter(function() {
-        $(this).toggle($(this).attr('name').toLowerCase().indexOf(value) > -1)
-      });
-});
   
 
 function getSong(pk){
 
     if(urlContainer[pk]){
-        if(playingPK!=pk){
+        if(playingPK!=pk)
             play(urlContainer[pk],pk);
-            if(audioPlayer.paused)audioPlayer.play();
-            }
+        //if(audioPlayer.paused)audioPlayer.play();
+            
         playingPK=pk;   
     }
 else{
@@ -161,7 +153,7 @@ function getAlbum(pk){
             
             let obj=JSON.parse(dat);
 
-            showAlbum(obj);
+            songShowAlbum(obj);
             
         }
     });

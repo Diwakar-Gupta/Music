@@ -28,8 +28,29 @@ def search(request):
     value=request.POST.get('what')
 
     result = []
+    
+    for s in Album.objects.all():
+        if s.name.lower().startswith(value):
+            obj={}
+            obj['isSong']=False
+            obj['pk']=s.pk
+            obj['name']=s.name
+            obj['pic']=str(s.pic)
+            #obj['songs']=[{'pk':i.pk,'name':i.name,'pic':'/media/'+str(i.pic)} for i in s.song_set.all()]
+            result.append(obj)
+    if len(result)>=10:
+        return HttpResponse(json.dumps(result))
 
-    return HttpResponse('')
+    for s in Song.objects.all():
+        if s.name.lower().startswith(value):
+            obj={}
+            obj['isSong']=True
+            obj['pk']=s.pk
+            obj['name']=s.name
+            obj['pic']=str(s.pic)
+            result.append(obj)
+
+    return HttpResponse(json.dumps(result))
 
 
 def getUrl(request):
@@ -41,19 +62,13 @@ def getUrl(request):
         return HttpResponse('/media/'+str(s.audio))
     elif what == 'album':
         a=Album.objects.get(pk=which)
-        f=[]
-        f.append(str(a.name))
-        f.append(str(a.author))
-        f.append(str(a.pic))
+        f={}
+        f['name']=str(a.name)
+        f['author']=str(a.author)
+        f['pic']=str(a.pic)
 
-        ss = a.song_set.all()
+        f['songs'] = [{'pk':i.pk,'name':i.name,'pic':'/media/'+str(i.pic)} for i in a.song_set.all()]
 
-        f.append((len(ss)))
-        for i in ss:
-            f.append(str(i.pk))
-            f.append(str(a.name))
-            f.append(str(a.author))
-            f.append('/media/'+str(a.pic))
         print(json.dumps(f))
         return HttpResponse(json.dumps(f))
 
