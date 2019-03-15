@@ -9,11 +9,10 @@ function getPage(page){
 function changeColor(page){
     switch(page){
         case 'index':
-            $($('#sidebar')[0]).removeClass('bg-dark');
-            $($('#sidebar')[0]).addClass('bg-light');break;
+            $($('#sidebar')[0]).css('background-color','#e0eaec');break;
         case 'song':
-            $($('#sidebar')[0]).removeClass('bg-light');
-            $($('#sidebar')[0]).addClass('bg-dark');break;
+            $($('#sidebar')[0]).css('background-color','#0d1215');
+            $($('#sidebar')[0]).find('a').css('color','#768fa0 !important');break;
 
     }
 }
