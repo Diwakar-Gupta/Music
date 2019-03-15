@@ -1,9 +1,9 @@
-let audioPlayer =$('#jp_audio_0')[0] ;
-let controlplay = $('#control-play');
-let controlpause = $('#control-pause');
+const audioPlayer =$('#jp_audio_0')[0] ;
+const controlplay = $('#control-play');
+const controlpause = $('#control-pause');
 let controlmute = $('#control-mute');
 let controlunmute = $('#control-unmute');
-let playListview = $($('#playList')[0]);
+const playListview = $($('#playList')[0]);
 let currentPlaying = -1;
 let playList = [];
 let playingPK=-1
@@ -39,7 +39,7 @@ function play(url,pk){
     $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');
     }catch(err){}
     audioPlayer.play();
-    playingPK=pk;
+    if(pk)playingPK=pk;
 }
 
 function playListSong(pk){
