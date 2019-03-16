@@ -16,6 +16,8 @@ class Song(models.Model):
     album = models.ForeignKey(Album,models.DO_NOTHING,blank=True, null=True)
     audio = models.FileField(blank=True, null=True)
     audioPath = models.CharField(max_length=200,blank=True, null=True)
+    likes = models.IntegerField(default=0,blank=True,null=True,editable=True)
+    dislikes = models.IntegerField(default=0, blank=True, null=True, editable=True)
 
 
 
