@@ -111,11 +111,11 @@ controlunmute.on('click',function(){audioPlayer.volume=0;});
 
 function getSong(pk){
 
-    if(urlContainer[pk]){
+    if(urlContainer[pk]&&(audioPlayer.src.endsWith(urlContainer[pk])==false)){
         if(playingPK!=pk)
             play(urlContainer[pk],pk);
-        //if(audioPlayer.paused)audioPlayer.play();
-            
+        
+        audioPlayer.play();
         playingPK=pk;   
     }
 else{
@@ -152,7 +152,7 @@ function getAlbum(pk){
         success : function(dat){
             
             let obj=JSON.parse(dat);
-
+            getPage('song');
             songShowAlbum(obj);
             
         }

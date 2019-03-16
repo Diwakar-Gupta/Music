@@ -116,3 +116,8 @@ function addSongToPlaylist(s){
     }
     }
 }
+
+
+function playNow(pk){
+    getSong(pk);
+}

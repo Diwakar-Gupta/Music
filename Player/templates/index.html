@@ -5,7 +5,7 @@
             href="##"
             class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i
             class="icon-refresh i-lg inline" id="refresh"></i></a>
-        <h2 class="font-thin m-b">Discover <span class="musicbar inline m-l-sm"
+        <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm"
                                                  style="width:20px;height:20px"> <span
                 class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
                 class="bar3 a3 bg-success"></span> <span
@@ -15,7 +15,7 @@
 
           {% for a in album %}
 
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+            <div onclick=getAlbum({{a.pk}}) pk={{a.pk}} class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                 <div class="item">
                     <div class="pos-rlt">
                         <div class="bottom"><span
@@ -51,15 +51,15 @@
                 <div class="row row-sm " id="indexNewSongContainer" >
 
                     {% for s in song %}
-                    <div class="col-xs-6 col-sm-3">
+                    <div draggable="true" ondragstart="dragstart_handler(event);" pk={{s.pk}} name="{{s.name}}" pic="{{s.pic}}" class="col-xs-6 col-sm-3">
                         <div class="item">
                             <div class="pos-rlt">
                                 <div class="item-overlay opacity r r-2x bg-black">
                                     <div class="center text-center m-t-n"><a
                                             href="##">
-                                            <i pk={{ s.pk }}  class="fa fa-play-circle i-2x"></i></a></div>
+                                            <i pk={{ s.pk }} onclick="playNow({{s.pk}})" class="fa fa-play-circle i-2x"></i></a></div>
                                 </div>
-                                <a href="#"><img
+                                <a href="#"><img 
                                         src={{ s.pic }} alt=""
                                         class="r r-2x img-full"></a></div>
                             <div class="padder-v"><a

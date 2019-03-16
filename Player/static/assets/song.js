@@ -3,12 +3,6 @@ function addToPlayList(){
 }
 
 
-
-function playNow(pk){
-    getSong(pk);
-}
-
-
 function songShowAlbum(data){
     let albumHeader=$(document.getElementById('songAlbumHeader'));
 
@@ -18,7 +12,7 @@ function songShowAlbum(data){
     let songContainer=$(document.getElementById('albumSongContainer'))
     songContainer.empty();
     data.songs.forEach(s => {
-        songContainer.append('<li pk='+s.pk+' name="'+s.name+'" pic="'+s.pic+'" onclick="playNow('+s.pk+')" class="list-group-item">        <div class="pull-right m-l"> <a href="#" class="m-r-sm"><i                                 class="icon-cloud-download"></i></a> <a                        href="#" class="m-r-sm"><i                                class="icon-plus"></i></a> <a                        href="#"><i class="icon-close"></i></a> </div>        <a href="#" class="jp-play-me m-r-sm pull-left"> <i                        class="icon-control-play text"></i> <i           onclick="controlpause.click();"             class="icon-control-pause text" style="display:none"></i> </a>        <div class="clear text-ellipsis"> <span>'+ s.name +'</span> <span                        class="text-muted"> --</span> </div></li>');    
+        songContainer.append('<li draggable="true" ondragstart="dragstart_handler(event);" pk='+s.pk+' name="'+s.name+'" pic="'+s.pic+'" onclick="playNow('+s.pk+')" class="list-group-item">        <div class="pull-right m-l"> <a href="#" class="m-r-sm"><i                                 class="icon-cloud-download"></i></a> <a                        href="#" class="m-r-sm"><i                                class="icon-plus"></i></a> <a                        href="#"><i class="icon-close"></i></a> </div>        <a href="#" class="jp-play-me m-r-sm pull-left"> <i                        class="icon-control-play text"></i> <i           onclick="controlpause.click();"             class="icon-control-pause text" style="display:none"></i> </a>        <div class="clear text-ellipsis"> <span>'+ s.name +'</span> <span                        class="text-muted"> --</span> </div></li>');    
     });
     
 }

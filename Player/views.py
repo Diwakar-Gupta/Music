@@ -67,7 +67,7 @@ def getUrl(request):
         f['author']=str(a.author)
         f['pic']=str(a.pic)
 
-        f['songs'] = [{'pk':i.pk,'name':i.name,'pic':'/media/'+str(i.pic)} for i in a.song_set.all()]
+        f['songs'] = [{'pk':i.pk,'name':i.name,'pic':str(i.pic)} for i in a.song_set.all()]
 
         print(json.dumps(f))
         return HttpResponse(json.dumps(f))
