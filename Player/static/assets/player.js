@@ -39,6 +39,12 @@ function play(url,pk){
     $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');
     }catch(err){}
     audioPlayer.play();
+    
+    setTimeout(function(){$(document.getElementById('control-progress')).attr('max',audioPlayer.duration);
+    document.getElementById('control-duration').innerHTML = parseInt(audioPlayer.duration/60)+':'+parseInt(audioPlayer.duration%60)
+    },1000)
+
+    
     if(pk)playingPK=pk;
 }
 
@@ -111,7 +117,7 @@ controlunmute.on('click',function(){audioPlayer.volume=0;});
 
 function getSong(pk){
 
-    if(urlContainer[pk]&&(audioPlayer.src.endsWith(urlContainer[pk])==false)){
+    if(urlContainer[pk]&&audioPlayer.src.endsWith(urlContainer[pk])){
         if(playingPK!=pk)
             play(urlContainer[pk],pk);
         

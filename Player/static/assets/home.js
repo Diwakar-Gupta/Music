@@ -9,10 +9,11 @@ function getPage(page){
 function changeColor(page){
     switch(page){
         case 'index':
-            $($('#sidebar')[0]).css('background-color','#e0eaec');break;
+            $($('#sidebar')[0]).css('background-color','#e0eaec');
+            $($('#playList li a span')).css('color','#545a5f');break;
         case 'song':
             $($('#sidebar')[0]).css('background-color','#0d1215');
-            $($('#sidebar')[0]).find('a').css('color','#768fa0 !important');break;
+            $($('#playList li a span')).css('color','#788f9f');break;
 
     }
 }
@@ -47,7 +48,7 @@ function changeColor(page){
 }
 
 $(document).ready(function () {
-    getPage('song');
+    getPage('index');
 });
 
 $("#searchSong").on("keyup", function() {
@@ -121,3 +122,9 @@ function addSongToPlaylist(s){
 function playNow(pk){
     getSong(pk);
 }
+
+audioPlayer.addEventListener('timeupdate',function(){
+    document.getElementById('control-progress').value=audioPlayer.currentTime
+    document.getElementById('control-currentTime').innerHTML = parseInt(audioPlayer.currentTime/60)+':'+parseInt(audioPlayer.currentTime%60)
+})
+
