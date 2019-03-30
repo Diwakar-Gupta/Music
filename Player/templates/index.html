@@ -77,7 +77,7 @@
                 <div style="height:12cm" class="scrollable list-group bg-white list-group-lg no-bg auto">
                     
                     {% for t in top %}
-                    <a onclick="playNow({{t.pk}})" pk={{ t.pk }} name="{{t.name}}" pic="{{t.pic}}"
+                    <a draggable="true" ondragstart="dragstart_handler(event);" onclick="playNow({{t.pk}})" pk={{ t.pk }} name="{{t.name}}" pic="{{t.pic}}"
                         href="#"
                         class="list-group-item clearfix"> <span
                         class="pull-right h2 text-muted m-l">{{ forloop.counter }}</span> <span
