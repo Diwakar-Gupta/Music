@@ -22,7 +22,7 @@ def getPage(request):
     if which == 'index':
         return render(request,'index.html',context={'album':list(album)[-1:-11:-1],'newSong':list(song)[-1:-11:-1],'top':list(song)[-1:-10:-1]})
     else :
-        return render(request,'song.html',context={'album':album,'song':song})
+        return render(request,'song.html',context={'album':album})
 
 
 def search(request):
@@ -60,7 +60,7 @@ def getUrl(request):
     which = int(request.POST.get('which'))
     if what == 'song':
         s = Song.objects.get(pk=which)
-        return HttpResponse('/media/'+str(s.audio))
+        return HttpResponse(str(s.audioPath))
     elif what == 'album':
         a=Album.objects.get(pk=which)
         f={}

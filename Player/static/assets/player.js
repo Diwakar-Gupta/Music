@@ -7,6 +7,7 @@ const playListview = $($('#playList')[0]);
 let currentPlaying = -1;
 let playList = [];
 let playingPK=-1
+let repeat=true;
 let urlContainer={}
 
 $(function () {
@@ -58,11 +59,11 @@ function playListSong(pk){
     }
 }
 
-function playNext(){
+function playNext(repeatt=false){
     let d=currentPlaying;
     if(playList.length!=0){
         d++;
-        if(d>=playList.length)d=0;
+        if(d>=playList.length){d=0;if(!repeatt)return;}
         currentPlaying=d;
         getSong(playList[d].pk);
     }
@@ -78,7 +79,11 @@ function playPrevious(){
     }
 }
 
-$('#control-next').on('click',playNext);
+function playNextRepeat(){
+    playNext(true)
+}
+
+$('#control-next').on('click',playNextRepeat);
 $('#control-previous').on('click',playPrevious);
 
 $(controlpause).on('click',function(){audioPlayer.pause();});
@@ -113,7 +118,24 @@ audioPlayer.addEventListener('volumechange',function(){
 
 controlmute.on('click',function(){audioPlayer.volume=document.getElementById('control-volume').value/10;});
 controlunmute.on('click',function(){audioPlayer.volume=0;});
-  
+
+
+$('.jp-repeat').on('click',function(){
+
+$('.jp-repeat-off').show('');
+$('.jp-repeat').hide('');
+
+repeat=true;
+})
+
+
+$('.jp-repeat-off').on('click',function(){
+
+    $('.jp-repeat').show('');
+    $('.jp-repeat-off').hide('');
+    repeat=false;    
+})
+
 
 function getSong(pk){
 

@@ -10,8 +10,8 @@ urlpatterns = [
     path('getPage',views.getPage),
     path('search',views.search),
     path('getUrl',views.getUrl,name='getUrl')
-   # path('search',views.search,name='search'),
-   # path('like',views.like,name='like'),
+   #path('search',views.search,name='search'),
+   #path('like',views.like,name='like'),
 ]
 
 if settings.DEBUG:
