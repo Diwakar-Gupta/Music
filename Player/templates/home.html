@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{% static 'assets/jplayer.flat.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'assets/app.v1.css' %}" type="text/css">
-    
+
     <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
     <style type="text/css">:root #content > #right > .dose > .dosesingle,
     :root #content > #center > .dose > .dosesingle {
@@ -35,15 +35,16 @@
                     class="fa fa-dedent text-active"></i> </a></li>
         </ul>
         <form id="search" action="#" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-            
+
             <div class="form-group">
                 <div class="input-group"><span class="input-group-btn"> <button type="submit"
                                                                                 class="btn btn-sm bg-white btn-icon rounded"><i
-                        class="fa fa-search"></i></button> </span> <input type="text" 
+                        class="fa fa-search"></i></button> </span> <input type="text"
                                                                           class="form-control input-sm no-border rounded"
                                                                           placeholder="Search songs, albums..."></div>
             </div>
             {% csrf_token %}
+
         </form>
         <div class="navbar-right ">
             <ul class="nav navbar-nav m-n hidden-xs nav-user user">
@@ -269,7 +270,7 @@
                                  style="width: 10px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 0px;"></div>
                         </div>
                     </section>
-                    
+
                     <footer class="footer hidden-xs no-padder text-center-nav-xs">
                         <div class="bg hidden-xs ">
                             <div class="dropdown dropup wrapper-sm clearfix"><a
@@ -301,7 +302,7 @@
                     <section>
                         <section class="vbox" id="mainContent" >
 
- 
+
 <div></div>
 
 
@@ -347,14 +348,14 @@
                                                     class="jp-video-play-icon">play</a></div>
                                             <div class="jp-interface">
                                                 <center class="jp-controls" style="display:block ">
-                                                    
+
                                                     <div class="hidden-xs hidden-sm jp-volume" style="width:40% !important" >
                                                         <div class="jp-volume-bar dk">
                                                             <input id="control-progress" type="range" class="jp-volume-bar-value lter" style="width: 100%; -webkit-appearance: none">
                                                         </div>
                                                     </div>
-                                                            
-                                                        <div><a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a> <a class="jp-repeat-off hid" title="repeat off" style="display: none;"><i class="icon-loop text-lt"></i></a>
+                                                    <div><a class="jp-repeat hid " title="repeat"><i class="icon-loop text-muted"></i></a> <a class="jp-repeat-off " title="repeat off" ><i class="icon-loop text-lt"></i></a>
+
                                                     </div>
                                                     <div><a class="jp-previous" id="control-previous"><i class="icon-control-rewind i-lg"></i></a>
                                                     </div>
@@ -373,10 +374,10 @@
                                                             </div>
                                                         </div>
                                                     </div-->
-                                                    <div id="control-currentTime" class="hidden-xs hidden-sm jp-current-time text-xs text-muted">
+                                                    <div id="control-currentTime" class="hidden-xs hidden-sm jp-current-time text-xs ">
                                                         00:32
                                                     </div>
-                                                    <div id="control-duration" class="hidden-xs hidden-sm jp-duration text-xs text-muted">
+                                                    <div id="control-duration" class="hidden-xs hidden-sm jp-duration text-xs ">
                                                         03:29
                                                     </div>
                                                     <div class="hidden-xs hidden-sm"><a id="control-unmute" class="jp-mute" title="mute"><i class="icon-volume-2"></i></a> <a id="control-mute" class="jp-unmute hid" title="unmute" style="display: none;"><i class="icon-volume-off"></i></a></div>
@@ -385,8 +386,8 @@
                                                                 <input id="control-volume" type="range" min=0 max=10 value=10 class="jp-volume-bar-value lter" style="width: 100%; -webkit-appearance: none">
                                                             </div>
                                                     </div>
-                                                    
-                                                    
+
+
                                                     <div class="hide"><a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a> <a class="jp-restore-screen" title="restore screen" style="display: none;"><i class="fa fa-compress text-lt"></i></a></div>
                                                 </center>
                                             </div>
@@ -427,7 +428,7 @@
                             <section class="w-f-md scrollable hover"><h4 class="font-thin m-l-md m-t">Drag Songs Here </h4>
                                 <ul class="list-group no-bg no-borders auto m-t-n-xxs" id="playList" >
 
-                                    {% for p in playlist %}   
+                                    {% for p in playlist %}
                                     <li pk={{p.pk}} name="{{ p.name }}" onclick="playListSong({{p.pk}})" class="list-group-item
                                                         clearfix"> <a href="#" class="jp-play-me
                                                             pull-right m-t-sm
@@ -447,11 +448,11 @@
                             <footer class="footer footer-md bg-black">
                                     <div class="form-group clearfix m-b-none">
                                             <div class="input-group m-t m-b">
-                                                <span class="input-group-btn"> 
+                                                <span class="input-group-btn">
                                                     <button type="submit" class="btn btn-sm bg-empty text-muted btn-icon">
                                                         <i class="fa fa-search"></i>
-                                                    </button> 
-                                                </span> 
+                                                    </button>
+                                                </span>
                                                 <input id="searchSong" type="text" class="form-control input-sm text-white bg-empty b-b b-dark no-border" placeholder="Search Song">
                                             </div>
                                         </div>
