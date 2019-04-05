@@ -115,11 +115,12 @@ audioPlayer.addEventListener('volumechange',function(){
     else{
         controlmute.hide();
         controlunmute.show();
+        $(document.getElementById('control-volume')).css("width",(document.getElementById('volume').offsetWidth*audioPlayer.volume)+"px");
     }
 
 })
 
-controlmute.on('click',function(){audioPlayer.volume=document.getElementById('control-volume').value/10;});
+controlmute.on('click',function(){audioPlayer.volume=document.getElementById('control-volume').offsetWidth/document.getElementById('volume').offsetWidth;});
 controlunmute.on('click',function(){audioPlayer.volume=0;});
 
 
@@ -184,16 +185,34 @@ function getAlbum(pk){
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
         },
         success : function(dat){
-
             let obj=JSON.parse(dat);
             getPage('song');
             songShowAlbum(obj);
-
         }
     });
 }
 
-document.getElementById('control-volume').onchange=function(){
+audioPlayer.addEventListener('timeupdate', function () {
+    document.getElementById('control-progress').style.width = audioPlayer.currentTime * 100 / audioPlayer.duration + "%";
+    document.getElementById('control-currentTime').innerHTML = parseInt(audioPlayer.currentTime / 60) + ':' + parseInt(audioPlayer.currentTime % 60)
+})
 
-    audioPlayer.volume=this.value/10;
+$('#progress').on('click', function (e) {
+    var rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width=this.offsetWidth;
+    audioPlayer.currentTime=(x/width)*audioPlayer.duration;
+})
+
+
+
+
+$('#volume').on('click',function(e){
+
+    var rect = e.target.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    const width=x/this.offsetWidth;
+    
+    audioPlayer.volume=width;
 }
+)
