@@ -40,12 +40,6 @@ function play(url,pk){
     $('li[pk='+pk+']').find('a .icon-control-pause').css('display','inline ');
     }catch(err){}
     audioPlayer.play();
-
-    setTimeout(function(){$(document.getElementById('control-progress')).attr('max',audioPlayer.duration);
-    document.getElementById('control-duration').innerHTML = parseInt(audioPlayer.duration/60)+':'+parseInt(audioPlayer.duration%60)
-    },1000)
-
-
     if(pk)playingPK=pk;
 }
 
@@ -192,9 +186,14 @@ function getAlbum(pk){
     });
 }
 
+const controlProgress=document.getElementById('control-progress');
+const controlCurrentTime=document.getElementById('control-currentTime');
+const controlDuration=document.getElementById('control-duration');
+
 audioPlayer.addEventListener('timeupdate', function () {
-    document.getElementById('control-progress').style.width = audioPlayer.currentTime * 100 / audioPlayer.duration + "%";
-    document.getElementById('control-currentTime').innerHTML = parseInt(audioPlayer.currentTime / 60) + ':' + parseInt(audioPlayer.currentTime % 60)
+    controlProgress.style.width = audioPlayer.currentTime * 100 / audioPlayer.duration + "%";
+    controlCurrentTime.innerHTML = parseInt(audioPlayer.currentTime / 60) + ':' + parseInt(audioPlayer.currentTime % 60)
+    controlDuration.innerHTML = parseInt(audioPlayer.duration/60)+':'+parseInt(audioPlayer.duration%60)
 })
 
 $('#progress').on('click', function (e) {
@@ -214,5 +213,4 @@ $('#volume').on('click',function(e){
     const width=x/this.offsetWidth;
     
     audioPlayer.volume=width;
-}
-)
+})
