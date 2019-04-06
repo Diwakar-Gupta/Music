@@ -26,7 +26,7 @@ class Song(models.Model):
             self.audioPath="/media/"+str(self.audio)
         if self.picture :
             self.pic="/media/"+str(self.picture)
-        else :
+        elif not self.pic :
             self.pic='/static/default_song.png'
         super().save()
 
