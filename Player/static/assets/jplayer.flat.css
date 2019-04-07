@@ -199,3 +199,13 @@ a.jp-playlist-current:before{
 		right: 0px;
 	}
 }
+
+@media only screen and (max-width: 600px) {
+
+	#controlBar {
+		position:fixed;
+		bottom:0px;
+		width:100%;
+	}
+	
+} 
