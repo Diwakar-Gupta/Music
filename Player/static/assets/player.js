@@ -41,11 +41,6 @@ function play(url,pk){
     }catch(err){}
     audioPlayer.play();
 
-    setTimeout(function(){$(document.getElementById('control-progress')).attr('max',audioPlayer.duration);
-    document.getElementById('control-duration').innerHTML = parseInt(audioPlayer.duration/60)+':'+parseInt(audioPlayer.duration%60)
-    },1000)
-
-
     if(pk)playingPK=pk;
 }
 
@@ -194,7 +189,8 @@ function getAlbum(pk){
 
 audioPlayer.addEventListener('timeupdate', function () {
     document.getElementById('control-progress').style.width = audioPlayer.currentTime * 100 / audioPlayer.duration + "%";
-    document.getElementById('control-currentTime').innerHTML = parseInt(audioPlayer.currentTime / 60) + ':' + parseInt(audioPlayer.currentTime % 60)
+    document.getElementById('control-currentTime').innerHTML = parseInt(audioPlayer.currentTime / 60) + ':' + parseInt(audioPlayer.currentTime % 60);
+    document.getElementById('control-duration').innerHTML = parseInt(audioPlayer.duration/60)+':'+parseInt(audioPlayer.duration%60)
 })
 
 $('#progress').on('click', function (e) {
@@ -212,7 +208,6 @@ $('#volume').on('click',function(e){
     var rect = e.target.getBoundingClientRect();
     var x = e.clientX - rect.left;
     const width=x/this.offsetWidth;
-    
+
     audioPlayer.volume=width;
-}
-)
+})

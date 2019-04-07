@@ -9,7 +9,7 @@ import json
 def Index(request):
     album = Album.objects.all()
     song = Song.objects.all()
-    
+
     return render(request,"home.html",context={'album':album,'song':song,})
 
 
@@ -29,7 +29,7 @@ def search(request):
     value=request.POST.get('what')
 
     result = []
-    
+
     for s in Album.objects.all():
         if s.name.lower().startswith(value):
             obj={}
