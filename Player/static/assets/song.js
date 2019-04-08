@@ -6,7 +6,7 @@ function addToPlayList(){
 function songShowAlbum(data){
     let albumHeader=$(document.getElementById('songAlbumHeader'));
 
-    albumHeader.find('div span[id=albumName]').text(data.name);
+    albumHeader.find('span[class="h2 font-thin"]').text(data.name);
     albumHeader.find('img').attr('src',data.pic);
 
     let songContainer=$(document.getElementById('albumSongContainer'))
