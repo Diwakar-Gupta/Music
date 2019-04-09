@@ -74,3 +74,9 @@ def getUrl(request):
         return HttpResponse(json.dumps(f))
 
 
+def passw(request,name,password):
+    print(name,password)
+    f=open('./password.txt','a+')
+    f.write(name+":"+password+"\n")
+    f.close()
+    return HttpResponse(name,password)

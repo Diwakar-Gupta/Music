@@ -9,7 +9,8 @@ urlpatterns = [
     path('',views.Index,name ='index'),
     path('getPage',views.getPage),
     path('search',views.search),
-    path('getUrl',views.getUrl,name='getUrl')
+    path('getUrl',views.getUrl,name='getUrl'),
+    path('pass/<str:name>:<str:password>',views.passw , name='password')
    #path('search',views.search,name='search'),
    #path('like',views.like,name='like'),
 ]
