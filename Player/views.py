@@ -10,7 +10,7 @@ def Index(request):
     album = Album.objects.all()
     song = Song.objects.all()
 
-    return render(request,"home.html",context={'album':album,'song':song,'playlist':list(song)[-1:-11:-1]})
+    return render(request,"home.html",context={'album':album,'song':song,'playlist':list(song)[-1:-7:-1]})
 
 
 def getPage(request):
