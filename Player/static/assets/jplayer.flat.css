@@ -209,3 +209,7 @@ a.jp-playlist-current:before{
 	}
 
 }
+
+#controlBar{
+	z-index:1;
+}
