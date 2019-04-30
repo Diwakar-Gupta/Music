@@ -49,7 +49,6 @@ function getPage(page) {
 
 $(document).ready(function () {
     getPage('index');
-playNext();
 });
 
 $("#searchSong").on("keyup", function () {
